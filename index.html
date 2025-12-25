@@ -3,144 +3,167 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SAFE TEL - Brand Identity</title>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Vazirmatn:wght@400;700&display=swap" rel="stylesheet">
+    <title>SAFE TEL - Brand Identity System</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800&family=Vazirmatn:wght@400;700&display=swap" rel="stylesheet">
     <style>
         :root {
-            --primary-teal: #7DD3C0;
-            --dark-navy: #0f172a;
+            --teal: #7DD3C0;
+            --navy: #0f172a;
+            --slate: #475569;
+            --white: #ffffff;
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
         
         body {
             font-family: 'Vazirmatn', sans-serif;
-            background: #f1f5f9;
-            color: var(--dark-navy);
-            overflow: hidden;
+            background: var(--navy);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            color: var(--navy);
         }
-        
+
         .presentation-container {
-            width: 100vw; height: 100vh;
-            display: flex; align-items: center; justify-content: center;
-        }
-        
-        .slide-wrapper {
-            width: 1280px; height: 720px;
-            background: white;
-            display: none; position: relative;
-            box-shadow: 0 40px 100px rgba(0,0,0,0.1);
-            border-radius: 16px; overflow: hidden;
-            border: 1px solid rgba(0,0,0,0.05);
-        }
-        
-        .slide-wrapper.active { display: flex; animation: slideIn 0.4s ease-out; }
-
-        @keyframes slideIn { from { opacity: 0; transform: scale(0.98); } to { opacity: 1; transform: scale(1); } }
-        
-        .slide-content {
-            width: 100%; height: 100%;
-            display: grid; grid-template-columns: 1fr 1fr;
-            align-items: center; padding: 0 80px;
+            width: 1280px;
+            height: 720px;
+            background: var(--white);
+            position: relative;
+            border-radius: 15px;
+            overflow: hidden;
+            display: flex;
         }
 
-        .text-side { padding-right: 40px; }
-        .image-side { display: flex; justify-content: center; align-items: center; }
-        
-        /* نمایش لوگوهای اصلی شما */
-        .main-logo-img {
-            max-width: 450px;
-            max-height: 450px;
-            object-fit: contain;
-            filter: drop-shadow(0 10px 20px rgba(0,0,0,0.1));
+        .slide {
+            display: none;
+            width: 100%;
+            height: 100%;
+            grid-template-columns: 1fr 1fr;
         }
 
-        .title { font-size: 54px; font-weight: 700; margin-bottom: 20px; color: var(--dark-navy); }
-        .description { font-size: 20px; color: #64748b; line-height: 1.6; }
+        .slide.active { display: grid; }
 
-        .nav-controls {
-            position: fixed; bottom: 30px; left: 50%;
-            transform: translateX(-50%); display: flex; gap: 20px;
-        }
+        .info-side { padding: 80px; display: flex; flex-direction: column; justify-content: center; }
+        .image-side { background: #f1f5f9; display: flex; justify-content: center; align-items: center; padding: 40px; }
         
-        .btn {
-            background: var(--dark-navy); color: white;
-            border: none; padding: 12px 40px; border-radius: 8px;
-            cursor: pointer; font-family: 'Vazirmatn'; font-weight: 700;
-        }
+        .image-side img { max-width: 90%; max-height: 80%; object-fit: contain; }
 
-        .btn:disabled { background: #cbd5e1; cursor: not-allowed; }
+        h1 { font-size: 45px; margin-bottom: 20px; font-weight: 700; }
+        p { font-size: 18px; line-height: 1.6; color: var(--slate); margin-bottom: 30px; }
+
+        /* Color Palette Slide 5 */
+        .color-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
+        .color-card { border: 1px solid #e2e8f0; padding: 15px; border-radius: 10px; display: flex; align-items: center; gap: 10px; }
+        .color-box { width: 50px; height: 50px; border-radius: 8px; }
+
+        /* Navigation */
+        .controls { position: absolute; bottom: 30px; left: 80px; display: flex; gap: 10px; }
+        .btn { padding: 10px 25px; border: none; background: var(--navy); color: white; border-radius: 5px; cursor: pointer; font-weight: bold; }
+        .btn:disabled { background: #cbd5e1; }
         
-        .dots { position: absolute; bottom: 40px; right: 80px; display: flex; gap: 10px; }
-        .dot { width: 10px; height: 10px; background: #e2e8f0; border-radius: 50%; }
-        .dot.active { background: var(--primary-teal); width: 30px; border-radius: 5px; }
+        .counter { position: absolute; bottom: 30px; right: 30px; font-family: 'Montserrat'; font-weight: bold; color: #cbd5e1; }
     </style>
 </head>
 <body>
 
     <div class="presentation-container">
         
-        <div class="slide-wrapper active">
-            <div class="slide-content">
-                <div class="text-side">
-                    <h1 class="title">هویت بصری برتر</h1>
-                    <p class="description">نمایش لوگوی رسمی SAFE TEL بر پایه استانداردهای مدرن امنیتی و ارتباطی.</p>
-                </div>
-                <div class="image-side">
-                    <img src="https://i.ibb.co/C3FLzjhx/1.png" class="main-logo-img" alt="Safe Tel Logo Dark">
-                </div>
+        <div class="slide active">
+            <div class="info-side">
+                <h1>SAFE TEL</h1>
+                <p>سیستم هویت بصری هوشمند و امن. طراحی شده برای پیشگامان تکنولوژی و امنیت ارتباطات.</p>
             </div>
-            <div class="dots"><div class="dot active"></div><div class="dot"></div><div class="dot"></div></div>
+            <div class="image-side">
+                <img src="https://i.ibb.co/C3FLzjhx/1.png" alt="Safe Tel 1">
+            </div>
         </div>
 
-        <div class="slide-wrapper">
-            <div class="slide-content">
-                <div class="text-side">
-                    <h1 class="title">تکنولوژی و اعتماد</h1>
-                    <p class="description">استفاده از پالت رنگی Teal برای انتقال حس نوآوری و سرعت در خدمات دیجیتال.</p>
-                </div>
-                <div class="image-side">
-                    <img src="https://i.ibb.co/fY4GT03b/2.png" class="main-logo-img" alt="Safe Tel Logo Teal">
-                </div>
+        <div class="slide">
+            <div class="info-side">
+                <h1>مفهوم دیزاین</h1>
+                <p>ترکیب سپر حفاظتی با زوایای مدرن. این لوگو نماد پایداری و نفوذناپذیری در دنیای دیجیتال است.</p>
             </div>
-            <div class="dots"><div class="dot"></div><div class="dot active"></div><div class="dot"></div></div>
+            <div class="image-side" style="background: var(--navy);">
+                <img src="https://i.ibb.co/fY4GT03b/2.png" alt="Safe Tel 2">
+            </div>
         </div>
 
-        <div class="slide-wrapper">
-            <div class="slide-content">
-                <div class="text-side">
-                    <h1 class="title">شفافیت و وضوح</h1>
-                    <p class="description">طراحی متمایز که در هر مقیاسی، از آیکون اپلیکیشن تا بیلبوردهای شهری، قدرت خود را حفظ می‌کند.</p>
-                </div>
-                <div class="image-side">
-                    <img src="https://i.ibb.co/VWMsLZdG/3.png" class="main-logo-img" alt="Safe Tel Logo White">
-                </div>
+        <div class="slide">
+            <div class="info-side">
+                <h1>وضوح بصری</h1>
+                <p>طراحی متمایز که در تمامی ابعاد، از کوچکترین آیکون‌ها تا بیلبوردهای بزرگ، قدرت برند را حفظ می‌کند.</p>
             </div>
-            <div class="dots"><div class="dot"></div><div class="dot"></div><div class="dot active"></div></div>
+            <div class="image-side">
+                <img src="https://i.ibb.co/VWMsLZdG/3.png" alt="Safe Tel 3">
+            </div>
         </div>
 
-    </div>
+        <div class="slide">
+            <div class="info-side">
+                <h1>تایپوگرافی</h1>
+                <p>استفاده از فونت‌های Montserrat و Vazirmatn برای ایجاد تعادل بین مدرنیته و اصالت.</p>
+                <div style="border-right: 4px solid var(--teal); padding-right: 15px;">
+                    <h2 style="font-family: 'Montserrat';">Montserrat Bold</h2>
+                    <h2 style="margin-top: 10px;">وزیرمتن ضخیم</h2>
+                </div>
+            </div>
+            <div class="image-side" style="background: var(--teal);">
+                <img src="https://i.ibb.co/C3FLzjhx/1.png" style="filter: brightness(0) invert(1);" alt="Safe Tel 4">
+            </div>
+        </div>
 
-    <div class="nav-controls">
-        <button id="prev" class="btn" disabled>قبلی</button>
-        <button id="next" class="btn">بعدی</button>
+        <div class="slide">
+            <div class="info-side">
+                <h1>هویت رنگی برند</h1>
+                <p>پالت رنگی فنی جهت استفاده در تمامی مستندات چاپی و دیجیتال.</p>
+                <div class="color-grid">
+                    <div class="color-card">
+                        <div class="color-box" style="background: #7DD3C0;"></div>
+                        <div><strong>Teal</strong><br>#7DD3C0</div>
+                    </div>
+                    <div class="color-card">
+                        <div class="color-box" style="background: #0F172A;"></div>
+                        <div><strong>Navy</strong><br>#0F172A</div>
+                    </div>
+                    <div class="color-card">
+                        <div class="color-box" style="background: #F59E0B;"></div>
+                        <div><strong>Gold</strong><br>#F59E0B</div>
+                    </div>
+                    <div class="color-card">
+                        <div class="color-box" style="background: #475569;"></div>
+                        <div><strong>Slate</strong><br>#475569</div>
+                    </div>
+                </div>
+            </div>
+            <div class="image-side">
+                <img src="https://i.ibb.co/fY4GT03b/2.png" alt="Safe Tel Colors">
+            </div>
+        </div>
+
+        <div class="controls">
+            <button class="btn" id="prev" disabled>قبلی</button>
+            <button class="btn" id="next">بعدی</button>
+        </div>
+        <div class="counter" id="counter">1 / 5</div>
     </div>
 
     <script>
-        const slides = document.querySelectorAll('.slide-wrapper');
+        const slides = document.querySelectorAll('.slide');
         const prev = document.getElementById('prev');
         const next = document.getElementById('next');
+        const counter = document.getElementById('counter');
         let current = 0;
 
-        function showSlide(index) {
-            slides.forEach((s, i) => s.classList.toggle('active', i === index));
-            current = index;
+        function update() {
+            slides.forEach((s, i) => s.classList.toggle('active', i === current));
+            counter.innerText = `${current + 1} / ${slides.length}`;
             prev.disabled = current === 0;
             next.disabled = current === slides.length - 1;
         }
 
-        prev.addEventListener('click', () => showSlide(current - 1));
-        next.addEventListener('click', () => showSlide(current + 1));
+        next.onclick = () => { if(current < slides.length - 1) { current++; update(); } }
+        prev.onclick = () => { if(current > 0) { current--; update(); } }
     </script>
 </body>
 </html>
