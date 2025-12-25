@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SAFE TEL - Brand Identity</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Vazirmatn:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-teal: #7DD3C0;
+            --dark-navy: #0f172a;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body {
+            font-family: 'Vazirmatn', sans-serif;
+            background: #f1f5f9;
+            color: var(--dark-navy);
+            overflow: hidden;
+        }
+        
+        .presentation-container {
+            width: 100vw; height: 100vh;
+            display: flex; align-items: center; justify-content: center;
+        }
+        
+        .slide-wrapper {
+            width: 1280px; height: 720px;
+            background: white;
+            display: none; position: relative;
+            box-shadow: 0 40px 100px rgba(0,0,0,0.1);
+            border-radius: 16px; overflow: hidden;
+            border: 1px solid rgba(0,0,0,0.05);
+        }
+        
+        .slide-wrapper.active { display: flex; animation: slideIn 0.4s ease-out; }
+
+        @keyframes slideIn { from { opacity: 0; transform: scale(0.98); } to { opacity: 1; transform: scale(1); } }
+        
+        .slide-content {
+            width: 100%; height: 100%;
+            display: grid; grid-template-columns: 1fr 1fr;
+            align-items: center; padding: 0 80px;
+        }
+
+        .text-side { padding-right: 40px; }
+        .image-side { display: flex; justify-content: center; align-items: center; }
+        
+        /* نمایش لوگوهای اصلی شما */
+        .main-logo-img {
+            max-width: 450px;
+            max-height: 450px;
+            object-fit: contain;
+            filter: drop-shadow(0 10px 20px rgba(0,0,0,0.1));
+        }
+
+        .title { font-size: 54px; font-weight: 700; margin-bottom: 20px; color: var(--dark-navy); }
+        .description { font-size: 20px; color: #64748b; line-height: 1.6; }
+
+        .nav-controls {
+            position: fixed; bottom: 30px; left: 50%;
+            transform: translateX(-50%); display: flex; gap: 20px;
+        }
+        
+        .btn {
+            background: var(--dark-navy); color: white;
+            border: none; padding: 12px 40px; border-radius: 8px;
+            cursor: pointer; font-family: 'Vazirmatn'; font-weight: 700;
+        }
+
+        .btn:disabled { background: #cbd5e1; cursor: not-allowed; }
+        
+        .dots { position: absolute; bottom: 40px; right: 80px; display: flex; gap: 10px; }
+        .dot { width: 10px; height: 10px; background: #e2e8f0; border-radius: 50%; }
+        .dot.active { background: var(--primary-teal); width: 30px; border-radius: 5px; }
+    </style>
+</head>
+<body>
+
+    <div class="presentation-container">
+        
+        <div class="slide-wrapper active">
+            <div class="slide-content">
+                <div class="text-side">
+                    <h1 class="title">هویت بصری برتر</h1>
+                    <p class="description">نمایش لوگوی رسمی SAFE TEL بر پایه استانداردهای مدرن امنیتی و ارتباطی.</p>
+                </div>
+                <div class="image-side">
+                    <img src="https://i.ibb.co/C3FLzjhx/1.png" class="main-logo-img" alt="Safe Tel Logo Dark">
+                </div>
+            </div>
+            <div class="dots"><div class="dot active"></div><div class="dot"></div><div class="dot"></div></div>
+        </div>
+
+        <div class="slide-wrapper">
+            <div class="slide-content">
+                <div class="text-side">
+                    <h1 class="title">تکنولوژی و اعتماد</h1>
+                    <p class="description">استفاده از پالت رنگی Teal برای انتقال حس نوآوری و سرعت در خدمات دیجیتال.</p>
+                </div>
+                <div class="image-side">
+                    <img src="https://i.ibb.co/fY4GT03b/2.png" class="main-logo-img" alt="Safe Tel Logo Teal">
+                </div>
+            </div>
+            <div class="dots"><div class="dot"></div><div class="dot active"></div><div class="dot"></div></div>
+        </div>
+
+        <div class="slide-wrapper">
+            <div class="slide-content">
+                <div class="text-side">
+                    <h1 class="title">شفافیت و وضوح</h1>
+                    <p class="description">طراحی متمایز که در هر مقیاسی، از آیکون اپلیکیشن تا بیلبوردهای شهری، قدرت خود را حفظ می‌کند.</p>
+                </div>
+                <div class="image-side">
+                    <img src="https://i.ibb.co/VWMsLZdG/3.png" class="main-logo-img" alt="Safe Tel Logo White">
+                </div>
+            </div>
+            <div class="dots"><div class="dot"></div><div class="dot"></div><div class="dot active"></div></div>
+        </div>
+
+    </div>
+
+    <div class="nav-controls">
+        <button id="prev" class="btn" disabled>قبلی</button>
+        <button id="next" class="btn">بعدی</button>
+    </div>
+
+    <script>
+        const slides = document.querySelectorAll('.slide-wrapper');
+        const prev = document.getElementById('prev');
+        const next = document.getElementById('next');
+        let current = 0;
+
+        function showSlide(index) {
+            slides.forEach((s, i) => s.classList.toggle('active', i === index));
+            current = index;
+            prev.disabled = current === 0;
+            next.disabled = current === slides.length - 1;
+        }
+
+        prev.addEventListener('click', () => showSlide(current - 1));
+        next.addEventListener('click', () => showSlide(current + 1));
+    </script>
+</body>
+</html>
